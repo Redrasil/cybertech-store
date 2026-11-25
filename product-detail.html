@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi Tiết Sản Phẩm - CyberTech</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <div><i class="fas fa-headset" style="color: var(--accent); margin-right: 6px;"></i> Hotline CSKH: <strong>1900 8888</strong></div>
+      <div class="top-bar-links">
+        <a href="about.html"><i class="fas fa-info-circle"></i> Giới thiệu</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Liên hệ & Góp ý</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <div class="navbar">
+        <button class="mobile-toggle" id="mobile-toggle"><i class="fas fa-bars"></i></button>
+        <a href="index.html" class="logo">
+          <i class="fas fa-microchip"></i>
+          <span>CYBER</span>TECH
+          <span class="logo-badge">PC STORE</span>
+        </a>
+        <div class="header-search">
+          <form id="header-search-form">
+            <input type="text" id="header-search-input" placeholder="Tìm kiếm linh kiện...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+          </form>
+        </div>
+        <div class="header-actions">
+          <div id="user-auth-slot"></div>
+          <a href="cart.html" class="action-btn" title="Giỏ hàng">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Giỏ hàng</span>
+            <span class="cart-count">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav class="main-nav" id="main-nav">
+    <div class="container">
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
+        <li><a href="products.html" class="active"><i class="fas fa-desktop"></i> Sản phẩm & Linh kiện</a></li>
+        <li><a href="upload-product.html"><i class="fas fa-cloud-upload-alt"></i> Upload sản phẩm <span class="nav-upload-badge">Đồ Án</span></a></li>
+        <li><a href="about.html"><i class="fas fa-users"></i> Giới thiệu</a></li>
+        <li><a href="contact.html"><i class="fas fa-paper-plane"></i> Liên hệ & Góp ý</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- BREADCRUMB -->
+  <div style="background: var(--gray-100); padding: 0.85rem 0; border-bottom: 1px solid var(--gray-200);">
+    <div class="container">
+      <div style="font-size: 0.88rem; color: var(--gray-600); display: flex; align-items: center; gap: 0.5rem;">
+        <a href="index.html" style="color: var(--primary);"><i class="fas fa-home"></i> Trang chủ</a>
+        <i class="fas fa-chevron-right" style="font-size: 0.7rem; color: var(--gray-400);"></i>
+        <a href="products.html" style="color: var(--primary);">Sản phẩm</a>
+        <i class="fas fa-chevron-right" style="font-size: 0.7rem; color: var(--gray-400);"></i>
+        <span id="breadcrumb-product-name" style="color: var(--gray-800); font-weight: 600;">Chi tiết</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCT DETAIL SECTION -->
+  <main class="section">
+    <div class="container">
+      <div id="product-detail-container" style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg); padding: 2.5rem; box-shadow: var(--card-shadow);">
+        <!-- Loaded by JS -->
+      </div>
+
+      <!-- RELATED PRODUCTS -->
+      <div style="margin-top: 3.5rem;">
+        <div class="section-header">
+          <h2 class="section-title"><i class="fas fa-layer-group"></i> Sản Phẩm Tương Tự / Cùng Danh Mục</h2>
+          <a href="products.html" class="btn btn-outline btn-sm">Xem tất cả</a>
+        </div>
+        <div class="product-grid" id="related-products-grid">
+          <!-- Loaded by JS -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 CYBERTECH STORE. Đồ án môn học Thiết Kế Web.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const id = urlParams.get('id');
+      const products = getStoredProducts();
+
+      const product = products.find(p => p.id === Number(id)) || products[0];
+
+      if (!product) {
+        document.getElementById('product-detail-container').innerHTML = `
+          <div style="text-align: center; padding: 3rem;">
+            <h2>Không tìm thấy sản phẩm!</h2>
+            <a href="products.html" class="btn btn-primary" style="margin-top: 1rem;">Quay lại danh mục</a>
+          </div>
+        `;
+        return;
+      }
+
+      document.title = `${product.name} - CyberTech Store`;
+      document.getElementById('breadcrumb-product-name').textContent = product.name;
+
+      // Render Specs
+      let specsTable = '';
+      if (product.specs) {
+        specsTable = `
+          <table style="width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 0.9rem;">
+            <tbody>
+              ${Object.entries(product.specs).map(([k, v]) => `
+                <tr style="border-bottom: 1px solid var(--gray-200);">
+                  <td style="padding: 0.65rem; background: var(--gray-50); font-weight: 600; width: 35%; color: var(--gray-700);">${k}</td>
+                  <td style="padding: 0.65rem; color: var(--gray-900);">${v}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        `;
+      }
+
+      const container = document.getElementById('product-detail-container');
+      container.innerHTML = `
+        <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 3rem; align-items: start;">
+          <!-- Left: Image -->
+          <div style="text-align: center; background: #fff; padding: 1.5rem; border: 1px solid var(--gray-200); border-radius: var(--radius-md);">
+            <img src="${product.image}" alt="${product.name}" style="max-height: 420px; width: 100%; object-fit: contain;">
+          </div>
+
+          <!-- Right: Details & Order -->
+          <div>
+            <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+              <span class="badge badge-sale">${product.categoryName || 'Linh kiện'}</span>
+              ${product.isHot ? '<span class="badge badge-hot"><i class="fas fa-fire"></i> Bán chạy</span>' : ''}
+              ${product.isNew ? '<span class="badge badge-new">Mới về</span>' : ''}
+            </div>
+
+            <h1 style="font-size: 1.65rem; font-weight: 800; color: var(--gray-900); margin-bottom: 0.75rem; line-height: 1.3;">
+              ${product.name}
+            </h1>
+
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.25rem;">
+              <div class="product-rating" style="margin-bottom: 0;">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                <span style="font-weight: 600; color: var(--gray-700);">${product.rating || 5}.0</span>
+                <span>(${product.reviewsCount || 10} đánh giá)</span>
+              </div>
+              <span style="color: var(--gray-300);">|</span>
+              <span style="color: var(--success); font-size: 0.88rem; font-weight: 600;"><i class="fas fa-check-circle"></i> Còn hàng</span>
+            </div>
+
+            <div style="background: var(--gray-50); padding: 1rem 1.25rem; border-radius: var(--radius-md); margin-bottom: 1.5rem; display: flex; align-items: baseline; gap: 1rem;">
+              <span style="font-size: 1.85rem; font-weight: 800; color: var(--danger);">${formatCurrency(product.price)}</span>
+              ${product.oldPrice ? `<span style="font-size: 1.1rem; color: var(--gray-400); text-decoration: line-through;">${formatCurrency(product.oldPrice)}</span>` : ''}
+            </div>
+
+            <p style="color: var(--gray-600); line-height: 1.7; margin-bottom: 1.5rem; font-size: 0.95rem;">
+              ${product.description || 'Sản phẩm chính hãng phân phối tại CyberTech Store, đầy đủ tem mác bảo hành và giấy tờ nguồn gốc rõ ràng.'}
+            </p>
+
+            <!-- Quantity & Actions -->
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap;">
+              <div style="display: flex; align-items: center; gap: 0.5rem;">
+                <span style="font-weight: 600; font-size: 0.9rem;">Số lượng:</span>
+                <div class="qty-control">
+                  <button class="qty-btn" onclick="changeDetailQty(-1)">-</button>
+                  <input type="text" id="detail-qty-input" class="qty-input" value="1" readonly>
+                  <button class="qty-btn" onclick="changeDetailQty(1)">+</button>
+                </div>
+              </div>
+
+              <button class="btn btn-primary btn-lg" onclick="handleDetailAddToCart(${product.id})">
+                <i class="fas fa-cart-plus"></i> Thêm vào giỏ hàng
+              </button>
+              <button class="btn btn-danger btn-lg" onclick="handleDetailBuyNow(${product.id})">
+                <i class="fas fa-bolt"></i> Mua ngay
+              </button>
+            </div>
+
+            <!-- Guarantee Perks -->
+            <div style="border-top: 1px solid var(--gray-200); padding-top: 1.25rem; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; font-size: 0.85rem; color: var(--gray-600);">
+              <div><i class="fas fa-shield-alt" style="color: var(--primary);"></i> Bảo hành 36 tháng chính hãng</div>
+              <div><i class="fas fa-rotate" style="color: var(--primary);"></i> Đổi mới 1-1 trong 30 ngày</div>
+              <div><i class="fas fa-truck" style="color: var(--primary);"></i> Giao hàng toàn quốc siêu tốc</div>
+              <div><i class="fas fa-toolbox" style="color: var(--primary);"></i> Miễn phí vệ sinh & tra keo tản nhiệt</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Specs Tabs / Info -->
+        <div style="margin-top: 3rem; border-top: 2px solid var(--gray-100); padding-top: 2rem;">
+          <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--gray-900); margin-bottom: 1rem;">
+            <i class="fas fa-cogs" style="color: var(--primary);"></i> Thông Số Kỹ Thuật Chi Tiết
+          </h3>
+          ${specsTable}
+        </div>
+      `;
+
+      // Related products
+      const related = products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+      const relatedGrid = document.getElementById('related-products-grid');
+      if (relatedGrid) {
+        if (related.length > 0) {
+          relatedGrid.innerHTML = related.map(createProductCardHTML).join('');
+        } else {
+          relatedGrid.innerHTML = products.filter(p => p.id !== product.id).slice(0, 4).map(createProductCardHTML).join('');
+        }
+      }
+    });
+
+    function changeDetailQty(delta) {
+      const input = document.getElementById('detail-qty-input');
+      let val = parseInt(input.value) + delta;
+      if (val < 1) val = 1;
+      input.value = val;
+    }
+
+    function handleDetailAddToCart(id) {
+      const qty = parseInt(document.getElementById('detail-qty-input').value) || 1;
+      addToCart(id, qty);
+    }
+
+    function handleDetailBuyNow(id) {
+      const qty = parseInt(document.getElementById('detail-qty-input').value) || 1;
+      addToCart(id, qty);
+      setTimeout(() => {
+        window.location.href = 'cart.html';
+      }, 500);
+    }
+  </script>
+</body>
+</html>

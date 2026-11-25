@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Sản Phẩm - Yêu Cầu Đồ Án Sinh Viên - CyberTech</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <div><i class="fas fa-headset" style="color: var(--accent); margin-right: 6px;"></i> Hotline CSKH: <strong>1900 8888</strong></div>
+      <div class="top-bar-links">
+        <a href="about.html"><i class="fas fa-info-circle"></i> Giới thiệu</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Liên hệ & Góp ý</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <div class="navbar">
+        <button class="mobile-toggle" id="mobile-toggle"><i class="fas fa-bars"></i></button>
+        <a href="index.html" class="logo">
+          <i class="fas fa-microchip"></i>
+          <span>CYBER</span>TECH
+          <span class="logo-badge">PC STORE</span>
+        </a>
+        <div class="header-search">
+          <form id="header-search-form">
+            <input type="text" id="header-search-input" placeholder="Tìm kiếm sản phẩm...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+          </form>
+        </div>
+        <div class="header-actions">
+          <div id="user-auth-slot"></div>
+          <a href="cart.html" class="action-btn" title="Giỏ hàng">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Giỏ hàng</span>
+            <span class="cart-count">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav class="main-nav" id="main-nav">
+    <div class="container">
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
+        <li><a href="products.html"><i class="fas fa-desktop"></i> Sản phẩm & Linh kiện</a></li>
+        <li><a href="upload-product.html" class="active"><i class="fas fa-cloud-upload-alt"></i> Upload sản phẩm <span class="nav-upload-badge">Đồ Án</span></a></li>
+        <li><a href="about.html"><i class="fas fa-users"></i> Giới thiệu</a></li>
+        <li><a href="contact.html"><i class="fas fa-paper-plane"></i> Liên hệ & Góp ý</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- CONTENT -->
+  <main class="section">
+    <div class="container">
+
+      <!-- INSTRUCTION BOX -->
+      <div class="upload-instruction">
+        <div style="display: flex; gap: 1rem; align-items: flex-start;">
+          <i class="fas fa-circle-info" style="font-size: 1.5rem; color: var(--primary); margin-top: 3px;"></i>
+          <div>
+            <h3 style="font-size: 1.1rem; color: var(--gray-900); margin-bottom: 0.25rem;">HƯỚNG DẪN DÀNH CHO SINH VIÊN (YÊU CẦU ĐỒ ÁN)</h3>
+            <p>Yêu cầu đề tài: <strong>"Mỗi sinh viên upload tối thiểu 5 sản phẩm. Thông tin sản phẩm lưu trữ trong LocalStorage."</strong></p>
+            <p style="margin-top: 0.35rem; font-size: 0.88rem; color: var(--gray-600);">
+              Bạn có thể tự tay nhập thông tin bên dưới hoặc click nút <strong>"Nạp nhanh 5 sản phẩm mẫu SV"</strong> để kiểm thử tính năng ngay lập tức. Sau khi lưu, sản phẩm sẽ xuất hiện ngay lập tức trên trang chủ và trang danh mục sản phẩm!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="upload-card">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h2 style="font-size: 1.6rem; font-weight: 800; color: var(--gray-900);">
+              <i class="fas fa-plus-circle" style="color: var(--primary);"></i> Form Đăng Sản Phẩm Mới
+            </h2>
+            <p style="color: var(--gray-500); font-size: 0.9rem;">Điền đầy đủ thông tin chi tiết của linh kiện hoặc thiết bị máy tính</p>
+          </div>
+
+          <div style="display: flex; gap: 0.75rem;">
+            <button type="button" class="btn btn-outline btn-sm" onclick="seedStudentProducts()">
+              <i class="fas fa-magic"></i> Nạp nhanh 5 SP mẫu SV
+            </button>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="handleResetDefault()">
+              <i class="fas fa-undo"></i> Reset dữ liệu gốc
+            </button>
+          </div>
+        </div>
+
+        <form id="upload-product-form" onsubmit="handleProductUpload(event)">
+          <div class="form-grid">
+
+            <!-- Tên sản phẩm -->
+            <div class="form-group full-width">
+              <label class="form-label" for="prod-name">Tên sản phẩm <span class="req">*</span></label>
+              <input type="text" id="prod-name" class="form-control" placeholder="Ví dụ: Nguồn máy tính ASUS ROG Thor 1000W Platinum II" required>
+            </div>
+
+            <!-- Danh mục -->
+            <div class="form-group">
+              <label class="form-label" for="prod-category">Danh mục sản phẩm <span class="req">*</span></label>
+              <select id="prod-category" class="form-control" required>
+                <option value="">-- Chọn danh mục --</option>
+                <option value="vga">VGA - Card màn hình</option>
+                <option value="cpu">CPU - Bộ vi xử lý</option>
+                <option value="laptop">Laptop Gaming & Văn phòng</option>
+                <option value="ram">RAM - Bộ nhớ trong</option>
+                <option value="monitor">Màn hình máy tính</option>
+                <option value="gear">Gaming Gear (Bàn phím, Chuột, Tai nghe)</option>
+                <option value="mainboard">Mainboard - Bo mạch chủ</option>
+                <option value="other">Linh kiện khác (PSU, Case, Tản nhiệt)</option>
+              </select>
+            </div>
+
+            <!-- Giá bán -->
+            <div class="form-group">
+              <label class="form-label" for="prod-price">Giá bán (VNĐ) <span class="req">*</span></label>
+              <input type="number" id="prod-price" class="form-control" placeholder="Ví dụ: 8990000" min="1000" required>
+            </div>
+
+            <!-- Giá cũ / Niêm yết -->
+            <div class="form-group">
+              <label class="form-label" for="prod-old-price">Giá niêm yết cũ (nếu có giảm giá)</label>
+              <input type="number" id="prod-old-price" class="form-control" placeholder="Ví dụ: 9990000" min="1000">
+            </div>
+
+            <!-- Tải ảnh: Chọn File từ máy tính hoặc Dán URL -->
+            <div class="form-group">
+              <label class="form-label">Hình ảnh sản phẩm <span class="req">*</span></label>
+              <div style="display: flex; gap: 0.5rem; margin-bottom: 0.5rem;">
+                <input type="text" id="prod-image-url" class="form-control" placeholder="Dán link ảnh Online (https://...)" onchange="previewUrlImage(this.value)">
+              </div>
+              <div style="font-size: 0.8rem; color: var(--gray-500); margin-bottom: 0.5rem;">Hoặc chọn ảnh trực tiếp từ máy tính:</div>
+              <input type="file" id="prod-image-file" accept="image/*" class="form-control" onchange="handleFileSelect(event)">
+            </div>
+
+            <!-- Image Preview Area -->
+            <div class="form-group full-width">
+              <label class="form-label">Xem trước hình ảnh</label>
+              <div class="image-preview-box" id="preview-box">
+                <i class="far fa-image" style="font-size: 2.5rem; color: var(--gray-400); margin-bottom: 0.5rem;"></i>
+                <span style="font-size: 0.85rem; color: var(--gray-500);">Chưa có ảnh nào được chọn</span>
+              </div>
+            </div>
+
+            <!-- Mô tả ngắn -->
+            <div class="form-group full-width">
+              <label class="form-label" for="prod-desc">Mô tả sản phẩm <span class="req">*</span></label>
+              <textarea id="prod-desc" class="form-control" placeholder="Giới thiệu các tính năng nổi bật của sản phẩm..." required></textarea>
+            </div>
+
+            <!-- Thông số kỹ thuật -->
+            <div class="form-group full-width">
+              <label class="form-label" for="prod-specs">Thông số kỹ thuật (Mỗi dòng 1 thông số dạng: Tên thông số: Giá trị)</label>
+              <textarea id="prod-specs" class="form-control" placeholder="Ví dụ:
+Công suất: 1000W
+Chuẩn hiệu suất: 80 Plus Platinum
+Bảo hành: 10 năm"></textarea>
+            </div>
+
+            <!-- Checkbox Hot / Mới -->
+            <div class="form-group full-width">
+              <div style="display: flex; gap: 2rem;">
+                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                  <input type="checkbox" id="prod-is-hot" style="width: 18px; height: 18px; accent-color: var(--danger);">
+                  <span style="font-weight: 600;">Đánh dấu là Sản phẩm HOT / Bán chạy</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer;">
+                  <input type="checkbox" id="prod-is-new" checked style="width: 18px; height: 18px; accent-color: var(--success);">
+                  <span style="font-weight: 600;">Đánh dấu là Hàng Mới Về</span>
+                </label>
+              </div>
+            </div>
+
+          </div>
+
+          <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end; gap: 1rem;">
+            <button type="reset" class="btn btn-outline" onclick="resetPreview()">Xóa form làm lại</button>
+            <button type="submit" class="btn btn-primary btn-lg">
+              <i class="fas fa-check-circle"></i> Lưu & Đăng Sản Phẩm (Lưu LocalStorage)
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- DANH SÁCH SẢN PHẨM HIỆN CÓ TRONG LOCALSTORAGE -->
+      <div style="background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-md); padding: 1.75rem; box-shadow: var(--card-shadow);">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.25rem;">
+          <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--gray-900);">
+            <i class="fas fa-list-check" style="color: var(--primary);"></i> Danh Sách Sản Phẩm Đang Lưu Trữ (LocalStorage)
+          </h3>
+          <span style="font-size: 0.88rem; color: var(--gray-500);">Tổng cộng: <strong id="manage-count">0</strong> sản phẩm</span>
+        </div>
+
+        <div style="overflow-x: auto;">
+          <table class="cart-table" style="box-shadow: none;">
+            <thead>
+              <tr>
+                <th>Ảnh</th>
+                <th>Tên sản phẩm</th>
+                <th>Danh mục</th>
+                <th>Giá bán</th>
+                <th style="text-align: center;">Hành động</th>
+              </tr>
+            </thead>
+            <tbody id="manage-products-tbody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 CYBERTECH STORE. Đồ án môn học Thiết Kế Web.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    let currentBase64Image = "";
+
+    // Image handling
+    function previewUrlImage(url) {
+      if (!url) return;
+      currentBase64Image = url;
+      const box = document.getElementById('preview-box');
+      box.innerHTML = `<img src="${url}" alt="Preview" style="max-height: 190px; object-fit: contain;">`;
+    }
+
+    function handleFileSelect(e) {
+      const file = e.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(evt) {
+          currentBase64Image = evt.target.result;
+          const box = document.getElementById('preview-box');
+          box.innerHTML = `<img src="${currentBase64Image}" alt="Preview" style="max-height: 190px; object-fit: contain;">`;
+          document.getElementById('prod-image-url').value = "";
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    function resetPreview() {
+      currentBase64Image = "";
+      document.getElementById('preview-box').innerHTML = `
+        <i class="far fa-image" style="font-size: 2.5rem; color: var(--gray-400); margin-bottom: 0.5rem;"></i>
+        <span style="font-size: 0.85rem; color: var(--gray-500);">Chưa có ảnh nào được chọn</span>
+      `;
+    }
+
+    // Submit upload form
+    function handleProductUpload(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('prod-name').value.trim();
+      const catSelect = document.getElementById('prod-category');
+      const category = catSelect.value;
+      const categoryName = catSelect.options[catSelect.selectedIndex].text;
+      const price = Number(document.getElementById('prod-price').value);
+      const oldPrice = Number(document.getElementById('prod-old-price').value) || null;
+      const desc = document.getElementById('prod-desc').value.trim();
+      const isHot = document.getElementById('prod-is-hot').checked;
+      const isNew = document.getElementById('prod-is-new').checked;
+
+      const image = currentBase64Image || document.getElementById('prod-image-url').value.trim();
+      if (!image) {
+        showToast('Vui lòng chọn hoặc dán đường dẫn hình ảnh!', 'error');
+        return;
+      }
+
+      // Parse specs
+      const specsRaw = document.getElementById('prod-specs').value.trim();
+      const specs = {};
+      if (specsRaw) {
+        specsRaw.split('\n').forEach(line => {
+          const parts = line.split(':');
+          if (parts.length >= 2) {
+            specs[parts[0].trim()] = parts.slice(1).join(':').trim();
+          }
+        });
+      }
+
+      const newProduct = {
+        name,
+        category,
+        categoryName,
+        price,
+        oldPrice,
+        image,
+        description: desc,
+        specs: Object.keys(specs).length > 0 ? specs : { "Xuất xứ": "Chính hãng", "Bảo hành": "36 tháng" },
+        rating: 5,
+        reviewsCount: 1,
+        isHot,
+        isNew
+      };
+
+      saveProduct(newProduct);
+      showToast('Đã upload và lưu sản phẩm thành công vào LocalStorage!');
+      document.getElementById('upload-product-form').reset();
+      resetPreview();
+      renderManageTable();
+    }
+
+    // Render Manage Table
+    function renderManageTable() {
+      const products = getStoredProducts();
+      const tbody = document.getElementById('manage-products-tbody');
+      const countEl = document.getElementById('manage-count');
+      if (countEl) countEl.textContent = products.length;
+
+      if (!tbody) return;
+
+      tbody.innerHTML = products.map(p => `
+        <tr>
+          <td><img src="${p.image}" style="width: 50px; height: 50px; object-fit: contain; border-radius: 4px;"></td>
+          <td style="font-weight: 600;">
+            <a href="product-detail.html?id=${p.id}">${p.name}</a>
+          </td>
+          <td><span class="badge badge-sale">${p.categoryName || p.category}</span></td>
+          <td style="font-weight: 700; color: var(--danger);">${formatCurrency(p.price)}</td>
+          <td style="text-align: center;">
+            <button onclick="handleDeleteProduct(${p.id})" class="btn btn-sm btn-danger" title="Xóa">
+              <i class="far fa-trash-alt"></i> Xóa
+            </button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function handleDeleteProduct(id) {
+      if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này khỏi LocalStorage?')) {
+        deleteProduct(id);
+        showToast('Đã xóa sản phẩm thành công', 'info');
+        renderManageTable();
+      }
+    }
+
+    function handleResetDefault() {
+      if (confirm('Khôi phục danh sách sản phẩm về mặc định ban đầu?')) {
+        resetProductsToDefault();
+        showToast('Đã reset danh sách sản phẩm về mặc định!');
+        renderManageTable();
+      }
+    }
+
+    // Nạp nhanh 5 sản phẩm demo sinh viên
+    function seedStudentProducts() {
+      const student5 = [
+        {
+          name: "Vỏ Case Máy Tính NZXT H9 Flow White Dual Chamber",
+          category: "other",
+          categoryName: "Linh kiện khác",
+          price: 4390000,
+          oldPrice: 4790000,
+          image: "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=600",
+          description: "Vỏ case bể cá 2 mặt kính cường lực liền mạch, hỗ trợ lắp tản nước 360mm nóc và đáy, luồng gió lưu thông cực mát.",
+          specs: { "Chuẩn Mainboard": "ATX, Micro-ATX, Mini-ITX", "Cổng kết nối": "Type-C, 2x USB 3.2, Audio", "Kính cường lực": "Mặt trước & Mặt hông" },
+          isHot: true, isNew: true
+        },
+        {
+          name: "Tai Nghe Gaming Không Dây HyperX Cloud III Wireless 120h",
+          category: "gear",
+          categoryName: "Gaming Gear",
+          price: 3690000,
+          oldPrice: 4100000,
+          image: "https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=600",
+          description: "Thời lượng pin huyền thoại lên tới 120 giờ chơi liên tục, mút đệm tai êm ái, âm thanh DTS Headphone:X Spatial Audio tái tạo vị trí cực chuẩn.",
+          specs: { "Kết nối": "Wireless 2.4GHz không độ trễ", "Pin": "Lên tới 120 giờ", "Microphone": "Khử ồn 10mm có đèn LED mute" },
+          isHot: true, isNew: false
+        },
+        {
+          name: "Ổ Cứng SSD Samsung 990 PRO 2TB PCIe Gen 4.0 x4 M.2 NVMe",
+          category: "other",
+          categoryName: "Linh kiện khác",
+          price: 4950000,
+          oldPrice: 5490000,
+          image: "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=600",
+          description: "Tốc độ đọc tuần tự lên đến 7450 MB/s, ghi 6900 MB/s. Đỉnh cao tốc độ dành cho load game nặng 4K và biên tập video ProRes chuyên nghiệp.",
+          specs: { "Dung lượng": "2TB", "Chuẩn kết nối": "M.2 2280 PCIe Gen 4", "Tốc độ đọc/ghi": "7450 / 6900 MB/s", "Bảo hành": "5 năm chính hãng" },
+          isHot: false, isNew: true
+        },
+        {
+          name: "Tản Nhiệt Nước AIO ASUS ROG RYUJIN III 360 ARGB",
+          category: "other",
+          categoryName: "Linh kiện khác",
+          price: 9890000,
+          oldPrice: 10500000,
+          image: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=600",
+          description: "Màn hình LCD 3.5 inch hiển thị thông số CPU/GPU thời gian thực hoặc ảnh GIF tùy chọn, bơm Asetek thế hệ 8 giải nhiệt đỉnh nóc cho Core i9.",
+          specs: { "Két làm mát": "360mm", "Quạt": "3x ROG Magnetic ARGB 120mm", "Màn hình": "3.5 inch LCD 60Hz full color" },
+          isHot: true, isNew: true
+        },
+        {
+          name: "Ghế Gaming Công Thái Học Secretlab TITAN Evo 2024",
+          category: "gear",
+          categoryName: "Gaming Gear",
+          price: 13500000,
+          oldPrice: 14800000,
+          image: "https://images.unsplash.com/photo-1598550476439-6847785fcea6?w=600",
+          description: "Đỉnh cao công thái học dành cho game thủ và coder ngồi máy tính 12 tiếng mỗi ngày không lo đau mỏi cột sống.",
+          specs: { "Chất liệu": "Da nhân tạo NEO Hybrid Leatherette", "Gối tựa đầu": "Nam châm từ tính Memory Foam", "Tải trọng": "Lên tới 130 kg" },
+          isHot: false, isNew: true
+        }
+      ];
+
+      student5.forEach(prod => saveProduct(prod));
+      showToast('Đã nạp thành công 5 sản phẩm mẫu của sinh viên vào LocalStorage!');
+      renderManageTable();
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      renderManageTable();
+    });
+  </script>
+</body>
+</html>

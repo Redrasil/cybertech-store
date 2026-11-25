@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Giỏ Hàng & Thanh Toán - CyberTech</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <div><i class="fas fa-headset" style="color: var(--accent); margin-right: 6px;"></i> Hotline CSKH: <strong>1900 8888</strong></div>
+      <div class="top-bar-links">
+        <a href="about.html"><i class="fas fa-info-circle"></i> Giới thiệu</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Liên hệ & Góp ý</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+      <div class="navbar">
+        <button class="mobile-toggle" id="mobile-toggle"><i class="fas fa-bars"></i></button>
+        <a href="index.html" class="logo">
+          <i class="fas fa-microchip"></i>
+          <span>CYBER</span>TECH
+          <span class="logo-badge">PC STORE</span>
+        </a>
+        <div class="header-search">
+          <form id="header-search-form">
+            <input type="text" id="header-search-input" placeholder="Tìm kiếm sản phẩm...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+          </form>
+        </div>
+        <div class="header-actions">
+          <div id="user-auth-slot"></div>
+          <a href="cart.html" class="action-btn" title="Giỏ hàng">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Giỏ hàng</span>
+            <span class="cart-count">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav class="main-nav" id="main-nav">
+    <div class="container">
+      <ul class="nav-links">
+        <li><a href="index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
+        <li><a href="products.html"><i class="fas fa-desktop"></i> Sản phẩm & Linh kiện</a></li>
+        <li><a href="upload-product.html"><i class="fas fa-cloud-upload-alt"></i> Upload sản phẩm <span class="nav-upload-badge">Đồ Án</span></a></li>
+        <li><a href="about.html"><i class="fas fa-users"></i> Giới thiệu</a></li>
+        <li><a href="contact.html"><i class="fas fa-paper-plane"></i> Liên hệ & Góp ý</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- CART SECTION -->
+  <main class="section">
+    <div class="container">
+      <div class="section-header">
+        <h1 class="section-title"><i class="fas fa-shopping-cart" style="color: var(--primary);"></i> Giỏ Hàng Của Bạn</h1>
+        <a href="products.html" class="btn btn-outline btn-sm"><i class="fas fa-arrow-left"></i> Tiếp tục mua sắm</a>
+      </div>
+
+      <div class="cart-layout">
+        <!-- Table Cart Items -->
+        <div style="overflow-x: auto;">
+          <table class="cart-table">
+            <thead>
+              <tr>
+                <th>Sản phẩm</th>
+                <th>Đơn giá</th>
+                <th>Số lượng</th>
+                <th>Thành tiền</th>
+                <th style="text-align: center;">Xóa</th>
+              </tr>
+            </thead>
+            <tbody id="cart-items-tbody">
+              <!-- Rendered via JS -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Checkout Info & Order Summary -->
+        <div class="cart-summary">
+          <h3 style="font-size: 1.15rem; font-weight: 700; color: var(--gray-900); margin-bottom: 1.25rem;">
+            Thông Tin Đơn Hàng
+          </h3>
+
+          <div class="summary-row">
+            <span>Tạm tính:</span>
+            <strong id="cart-subtotal">0 ₫</strong>
+          </div>
+          <div class="summary-row">
+            <span>Phí vận chuyển:</span>
+            <span style="color: var(--success); font-weight: 600;">Miễn phí toàn quốc</span>
+          </div>
+          <div class="summary-row total">
+            <span>Tổng thanh toán:</span>
+            <span class="total-price" id="cart-total">0 ₫</span>
+          </div>
+
+          <form onsubmit="processCheckout(event)" style="margin-top: 1.5rem; border-top: 1px solid var(--gray-200); padding-top: 1.25rem;">
+            <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem;">Thông tin giao hàng</h4>
+            
+            <div class="form-group">
+              <label class="form-label">Họ và tên người nhận <span class="req">*</span></label>
+              <input type="text" id="checkout-name" class="form-control" placeholder="Nguyễn Văn A" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Số điện thoại <span class="req">*</span></label>
+              <input type="tel" id="checkout-phone" class="form-control" placeholder="0912 345 678" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Địa chỉ nhận hàng <span class="req">*</span></label>
+              <textarea id="checkout-address" class="form-control" style="min-height: 70px;" placeholder="Số nhà, tên đường, phường/xã, quận/huyện, tỉnh/thành..." required></textarea>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Hình thức thanh toán</label>
+              <select class="form-control" id="checkout-payment">
+                <option value="cod">Thanh toán khi nhận hàng (COD)</option>
+                <option value="bank">Chuyển khoản ngân hàng (QR Code 24/7)</option>
+                <option value="momo">Ví điện tử MoMo / ZaloPay</option>
+              </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-lg btn-block" style="margin-top: 1rem;">
+              <i class="fas fa-check-double"></i> Xác Nhận Đặt Hàng
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom">
+        <p>&copy; 2026 CYBERTECH STORE. Đồ án môn học Thiết Kế Web.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/products-data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      renderCartPage();
+
+      // Pre-fill user name if logged in
+      const user = getCurrentUser();
+      if (user) {
+        const nameInput = document.getElementById('checkout-name');
+        if (nameInput) nameInput.value = user.name;
+      }
+    });
+  </script>
+</body>
+</html>

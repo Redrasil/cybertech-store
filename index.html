@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CyberTech - Thế Giới Công Nghệ & Linh Kiện Máy Tính Cao Cấp</title>
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="container">
+      <div>
+        <i class="fas fa-headset" style="color: var(--accent); margin-right: 6px;"></i> Hotline CSKH: <strong>1900 8888</strong> (08:00 - 21:30)
+        <span style="margin: 0 12px; opacity: 0.3;">|</span>
+        <i class="fas fa-shield-alt" style="color: var(--success); margin-right: 6px;"></i> 100% Hàng Chính Hãng - Bảo Hành 36 Tháng
+      </div>
+      <div class="top-bar-links">
+        <a href="about.html"><i class="fas fa-info-circle"></i> Giới thiệu</a>
+        <a href="contact.html"><i class="fas fa-envelope"></i> Liên hệ & Góp ý</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN HEADER -->
+  <header class="header">
+    <div class="container">
+      <div class="navbar">
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Toggle menu">
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <a href="index.html" class="logo">
+          <i class="fas fa-microchip"></i>
+          <span>CYBER</span>TECH
+          <span class="logo-badge">PC STORE</span>
+        </a>
+
+        <!-- Search Bar -->
+        <div class="header-search">
+          <form id="header-search-form">
+            <input type="text" id="header-search-input" placeholder="Tìm kiếm CPU, VGA, Laptop, Gaming Gear...">
+            <button type="submit"><i class="fas fa-search"></i></button>
+          </form>
+        </div>
+
+        <!-- Action buttons -->
+        <div class="header-actions">
+          <div id="user-auth-slot">
+            <a href="login.html" class="action-btn">
+              <i class="far fa-user"></i>
+              <span>Đăng nhập</span>
+            </a>
+          </div>
+
+          <a href="cart.html" class="action-btn" title="Giỏ hàng">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Giỏ hàng</span>
+            <span class="cart-count">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAVIGATION BAR -->
+  <nav class="main-nav" id="main-nav">
+    <div class="container">
+      <ul class="nav-links">
+        <li><a href="index.html" class="active"><i class="fas fa-home"></i> Trang chủ</a></li>
+        <li><a href="products.html"><i class="fas fa-desktop"></i> Sản phẩm & Linh kiện</a></li>
+        <li><a href="upload-product.html"><i class="fas fa-cloud-upload-alt"></i> Upload sản phẩm <span class="nav-upload-badge">Đồ Án</span></a></li>
+        <li><a href="about.html"><i class="fas fa-users"></i> Giới thiệu</a></li>
+        <li><a href="contact.html"><i class="fas fa-paper-plane"></i> Liên hệ & Góp ý</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO BANNER SLIDER -->
+  <section class="hero-slider">
+    <div class="container">
+      <div class="hero-slide">
+        <div class="hero-content">
+          <span class="badge badge-hot" style="margin-bottom: 1rem;"><i class="fas fa-bolt"></i> SIÊU SALE CÔNG NGHỆ 2026</span>
+          <h1>NÂNG TẦM CHIẾN HẠM <span>GAMING & WORKSTATION</span></h1>
+          <p>Trải nghiệm card đồ họa RTX 40 Series thế hệ mới, CPU Intel Gen 14th & AMD Ryzen AI. Xử lý đồ họa mượt mà, chiến game đỉnh cao không giới hạn.</p>
+          <div class="hero-actions">
+            <a href="products.html" class="btn btn-primary btn-lg"><i class="fas fa-shopping-bag"></i> Khám phá ngay</a>
+            <a href="upload-product.html" class="btn btn-outline btn-lg" style="color: #fff; border-color: #fff;"><i class="fas fa-plus-circle"></i> Đăng SP SV</a>
+          </div>
+        </div>
+        <div class="hero-image-wrapper">
+          <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?w=800&auto=format&fit=crop&q=80" alt="RTX 4080 Gaming" class="hero-img">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERKS / FEATURES BAR -->
+  <section class="features-bar">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-box">
+          <div class="feature-icon"><i class="fas fa-truck-fast"></i></div>
+          <div class="feature-info">
+            <h4>Miễn Phí Vận Chuyển</h4>
+            <p>Đơn hàng từ 1.000.000₫</p>
+          </div>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon"><i class="fas fa-shield-halved"></i></div>
+          <div class="feature-info">
+            <h4>Chính Hãng 100%</h4>
+            <p>Bảo hành 1 đổi 1 trong 30 ngày</p>
+          </div>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon"><i class="fas fa-tools"></i></div>
+          <div class="feature-info">
+            <h4>Lắp Đặt PC Miễn Phí</h4>
+            <p>Tư vấn tối ưu cấu hình</p>
+          </div>
+        </div>
+        <div class="feature-box">
+          <div class="feature-icon"><i class="fas fa-credit-card"></i></div>
+          <div class="feature-info">
+            <h4>Trả Góp 0% Lãi Suất</h4>
+            <p>Thủ tục xét duyệt 15 phút</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POPULAR CATEGORIES -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title"><i class="fas fa-th-large"></i> Danh Mục Nổi Bật</h2>
+          <p class="section-subtitle">Lựa chọn linh kiện và thiết bị công nghệ phù hợp với nhu cầu của bạn</p>
+        </div>
+      </div>
+
+      <div class="category-grid">
+        <a href="products.html?category=vga" class="category-card">
+          <div class="category-icon"><i class="fas fa-microchip"></i></div>
+          <span class="category-name">VGA - Card Đồ Họa</span>
+        </a>
+        <a href="products.html?category=cpu" class="category-card">
+          <div class="category-icon"><i class="fas fa-memory"></i></div>
+          <span class="category-name">CPU - Bộ Vi Xử Lý</span>
+        </a>
+        <a href="products.html?category=laptop" class="category-card">
+          <div class="category-icon"><i class="fas fa-laptop"></i></div>
+          <span class="category-name">Laptop Gaming</span>
+        </a>
+        <a href="products.html?category=ram" class="category-card">
+          <div class="category-icon"><i class="fas fa-server"></i></div>
+          <span class="category-name">RAM - Bộ Nhớ</span>
+        </a>
+        <a href="products.html?category=monitor" class="category-card">
+          <div class="category-icon"><i class="fas fa-tv"></i></div>
+          <span class="category-name">Màn Hình Gaming</span>
+        </a>
+        <a href="products.html?category=gear" class="category-card">
+          <div class="category-icon"><i class="fas fa-keyboard"></i></div>
+          <span class="category-name">Gaming Gear</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLASH SALE / HOT PRODUCTS -->
+  <section class="section" style="background: #fff;">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title" style="color: var(--danger);"><i class="fas fa-fire-flame-curved"></i> SẢN PHẨM BÁN CHẠY (HOT DEALS)</h2>
+          <p class="section-subtitle">Top linh kiện và máy tính được săn đón nhiều nhất tuần qua</p>
+        </div>
+        <a href="products.html" class="btn btn-outline btn-sm">Xem tất cả <i class="fas fa-chevron-right"></i></a>
+      </div>
+
+      <div class="product-grid" id="hot-products-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- UPLOAD BANNER FOR STUDENTS -->
+  <section class="section" style="padding: 2.5rem 0;">
+    <div class="container">
+      <div style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); border-radius: var(--radius-lg); padding: 2.5rem; color: #fff; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1.5rem; box-shadow: var(--card-shadow-hover);">
+        <div>
+          <span class="badge" style="background: #fbbf24; color: #1e3a8a; margin-bottom: 0.5rem;"><i class="fas fa-graduation-cap"></i> YÊU CẦU ĐỒ ÁN MÔN HỌC</span>
+          <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.5rem;">Cổng Đăng Sản Phẩm Mới (Tối thiểu 5 SP / SV)</h2>
+          <p style="opacity: 0.9; max-width: 650px;">Hệ thống hỗ trợ sinh viên upload trực tiếp sản phẩm kèm hình ảnh, giá, mô tả và thông số kỹ thuật. Dữ liệu được lưu trữ tự động trong LocalStorage theo đúng yêu cầu đề tài.</p>
+        </div>
+        <a href="upload-product.html" class="btn btn-secondary btn-lg" style="background: #fff; color: #1e3a8a; font-weight: 700;">
+          <i class="fas fa-upload"></i> Upload Sản Phẩm Ngay
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LATEST PRODUCTS -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title"><i class="fas fa-sparkles"></i> SẢN PHẨM MỚI NHẤT</h2>
+          <p class="section-subtitle">Cập nhật công nghệ mới nhất vừa cập bến CyberTech</p>
+        </div>
+        <a href="products.html" class="btn btn-outline btn-sm">Xem toàn bộ kho <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="product-grid" id="latest-products-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" style="background: #fff;">
+    <div class="container">
+      <div class="section-header" style="text-align: center; display: block;">
+        <h2 class="section-title" style="justify-content: center;"><i class="fas fa-comments"></i> Khách Hàng Nói Về CyberTech</h2>
+        <p class="section-subtitle">Đồng hành cùng hàng nghìn game thủ và kỹ sư công nghệ tại Việt Nam</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem;">
+        <div style="background: var(--gray-50); padding: 1.75rem; border-radius: var(--radius-md); border: 1px solid var(--gray-200);">
+          <div style="color: var(--warning); margin-bottom: 0.75rem;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p style="font-style: italic; color: var(--gray-700); margin-bottom: 1rem; font-size: 0.92rem;">
+            "Mình đã build trọn bộ PC i7-14700K và RTX 4080 tại CyberTech. Đi dây siêu gọn gàng, nhiệt độ cực mát và giao hàng tận nơi trong 2 giờ!"
+          </p>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <div style="width: 42px; height: 42px; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold;">HT</div>
+            <div>
+              <strong style="font-size: 0.95rem; color: var(--gray-900);">Hoàng Tuấn</strong>
+              <div style="font-size: 0.8rem; color: var(--gray-500);">Kỹ sư AI & Game Streamer</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: var(--gray-50); padding: 1.75rem; border-radius: var(--radius-md); border: 1px solid var(--gray-200);">
+          <div style="color: var(--warning); margin-bottom: 0.75rem;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p style="font-style: italic; color: var(--gray-700); margin-bottom: 1rem; font-size: 0.92rem;">
+            "Dịch vụ khách hàng tuyệt vời. Đổi mới ngay khi bàn phím FL-Esports của mình bị lỗi kết nối không dây. Rất tin tưởng CyberTech."
+          </p>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <div style="width: 42px; height: 42px; border-radius: 50%; background: #10b981; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold;">MN</div>
+            <div>
+              <strong style="font-size: 0.95rem; color: var(--gray-900);">Minh Nhật</strong>
+              <div style="font-size: 0.8rem; color: var(--gray-500);">Lập trình viên Frontend</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: var(--gray-50); padding: 1.75rem; border-radius: var(--radius-md); border: 1px solid var(--gray-200);">
+          <div style="color: var(--warning); margin-bottom: 0.75rem;">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p style="font-style: italic; color: var(--gray-700); margin-bottom: 1rem; font-size: 0.92rem;">
+            "Màn hình OLED LG 240Hz màu đen sâu thẳm, chiến CS2 và Valorant cực mượt. Giá lại cạnh tranh hơn nhiều cửa hàng khác."
+          </p>
+          <div style="display: flex; align-items: center; gap: 0.75rem;">
+            <div style="width: 42px; height: 42px; border-radius: 50%; background: #8b5cf6; color: #fff; display: flex; align-items: center; justify-content: center; font-weight: bold;">QL</div>
+            <div>
+              <strong style="font-size: 0.95rem; color: var(--gray-900);">Quốc Long</strong>
+              <div style="font-size: 0.8rem; color: var(--gray-500);">Game thủ bán chuyên</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <a href="index.html" class="logo" style="color: #fff; margin-bottom: 1rem; display: inline-flex;">
+            <i class="fas fa-microchip" style="color: var(--accent);"></i>
+            <span>CYBER</span>TECH
+          </a>
+          <p style="color: var(--gray-400); font-size: 0.9rem; line-height: 1.7; margin-bottom: 1.5rem;">
+            Hệ thống bán lẻ máy tính, linh kiện phần cứng công nghệ hàng đầu. Cam kết sản phẩm chính hãng 100%, bảo hành chuẩn hãng và giá tốt nhất thị trường.
+          </p>
+          <div style="display: flex; gap: 0.75rem;">
+            <a href="#" class="quick-action-btn"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="quick-action-btn"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="quick-action-btn"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="quick-action-btn"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h3>Về Chúng Tôi</h3>
+          <ul class="footer-links">
+            <li><a href="about.html">Giới thiệu CyberTech</a></li>
+            <li><a href="products.html">Sản phẩm & Linh kiện</a></li>
+            <li><a href="upload-product.html">Khu vực sinh viên (Upload)</a></li>
+            <li><a href="contact.html">Liên hệ hỗ trợ</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Chính Sách & Dịch Vụ</h3>
+          <ul class="footer-links">
+            <li><a href="#">Chính sách bảo hành 36T</a></li>
+            <li><a href="#">Chính sách đổi trả 1-1</a></li>
+            <li><a href="#">Giao hàng & Lắp đặt tại nhà</a></li>
+            <li><a href="#">Bảo mật thông tin khách hàng</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Liên Hệ Trụ Sở</h3>
+          <p style="color: var(--gray-400); font-size: 0.9rem; margin-bottom: 0.6rem;">
+            <i class="fas fa-map-marker-alt" style="color: var(--primary); margin-right: 6px;"></i> 123 Đường Công Nghệ, Quận 1, TP. Hồ Chí Minh
+          </p>
+          <p style="color: var(--gray-400); font-size: 0.9rem; margin-bottom: 0.6rem;">
+            <i class="fas fa-phone-alt" style="color: var(--primary); margin-right: 6px;"></i> Hotline: 1900 8888 - 0988 888 888
+          </p>
+          <p style="color: var(--gray-400); font-size: 0.9rem; margin-bottom: 1rem;">
+            <i class="fas fa-envelope" style="color: var(--primary); margin-right: 6px;"></i> Email: support@cybertech.vn
+          </p>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 CYBERTECH STORE. Đồ án môn học Thiết Kế Web. Bản quyền thuộc về Nhóm Sinh Viên Thực Hiện.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/products-data.js"></script>
+  <script src="js/main.js"></script>
+  <script>
+    // Home Page specific render
+    document.addEventListener('DOMContentLoaded', () => {
+      const products = getStoredProducts();
+      
+      // Render Hot Products (isHot = true or top 4)
+      const hotGrid = document.getElementById('hot-products-grid');
+      if (hotGrid) {
+        const hotProducts = products.filter(p => p.isHot).slice(0, 4);
+        hotGrid.innerHTML = hotProducts.map(createProductCardHTML).join('');
+      }
+
+      // Render Latest Products (top 4 or 8)
+      const latestGrid = document.getElementById('latest-products-grid');
+      if (latestGrid) {
+        const latestProducts = products.slice(0, 8);
+        latestGrid.innerHTML = latestProducts.map(createProductCardHTML).join('');
+      }
+    });
+  </script>
+</body>
+</html>
