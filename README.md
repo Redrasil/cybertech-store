@@ -3,6 +3,7 @@
 - **Môn học:** Thiết kế Web / Lập trình Web
 - **Đề tài:** Website thương mại điện tử kinh doanh đồ công nghệ, linh kiện máy tính
 - **Sinh viên:** Redrasil
+- **Website trực tuyến:** [https://redrasil.github.io/cybertech-store/](https://redrasil.github.io/cybertech-store/)
 - **Mã nguồn:** [https://github.com/Redrasil/cybertech-store](https://github.com/Redrasil/cybertech-store)
 
 ---
@@ -20,7 +21,7 @@ Website bán hàng công nghệ trực tuyến được xây dựng bằng các 
 - `index.html`: Trang chủ (banner, danh mục, sản phẩm nổi bật, sản phẩm mới).
 - `products.html`: Danh sách sản phẩm, lọc theo danh mục/giá, tìm kiếm và xem nhanh (modal).
 - `product-detail.html`: Chi tiết thông số kỹ thuật sản phẩm, chọn số lượng và đặt mua.
-- `upload-product.html`: **Upload sản phẩm mới lưu vào LocalStorage** (hỗ trợ tải ảnh từ máy tính hoặc link URL, quản lý danh sách sản phẩm đã upload).
+- `upload-product.html`: Upload sản phẩm mới lưu vào LocalStorage (hỗ trợ tải ảnh từ máy tính hoặc link URL, quản lý danh sách sản phẩm đã upload).
 - `cart.html`: Giỏ hàng, tăng/giảm số lượng, tính tiền và form đặt hàng.
 - `about.html`: Trang giới thiệu cửa hàng và đồ án.
 - `contact.html`: Thông tin liên hệ, bản đồ và form gửi góp ý (lưu LocalStorage).
@@ -35,5 +36,6 @@ Website bán hàng công nghệ trực tuyến được xây dựng bằng các 
 
 ---
 
-## 4. Hướng dẫn chạy
-Mở trực tiếp tệp `index.html` bằng trình duyệt web bất kỳ hoặc chạy qua extension **Live Server** trên VS Code.
+## 4. Trải nghiệm trực tiếp & Hướng dẫn chạy
+- **Xem trực tiếp trên web:** [https://redrasil.github.io/cybertech-store/](https://redrasil.github.io/cybertech-store/)
+- **Chạy offline trên máy:** Tải mã nguồn về và mở trực tiếp tệp `index.html` bằng trình duyệt web bất kỳ hoặc dùng extension **Live Server** trên VS Code.
