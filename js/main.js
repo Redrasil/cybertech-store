@@ -111,7 +111,8 @@ function updateCartCounter() {
 function getUsers() {
   const users = localStorage.getItem(STORAGE_KEYS.USERS);
   return users ? JSON.parse(users) : [
-    { name: "Sinh Viên Demo", email: "student@cybertech.vn", password: "123" }
+    { name: "Quản Trị Viên", email: "admin@cybertech.vn", password: "123" },
+    { name: "Quản Trị Viên", email: "student@cybertech.vn", password: "123" }
   ];
 }
 
