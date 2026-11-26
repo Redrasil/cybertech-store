@@ -196,7 +196,14 @@ function updateAuthUI() {
   const authOnlyItems = document.querySelectorAll('.auth-only');
 
   if (user) {
-    authOnlyItems.forEach(el => el.style.display = '');
+    document.body.classList.add('logged-in');
+    authOnlyItems.forEach(el => {
+      if (el.tagName === 'LI') {
+        el.style.setProperty('display', 'list-item', 'important');
+      } else {
+        el.style.setProperty('display', 'block', 'important');
+      }
+    });
     if (authContainer) {
       authContainer.innerHTML = `
         <div style="display: flex; align-items: center; gap: 0.75rem;">
@@ -213,7 +220,10 @@ function updateAuthUI() {
       `;
     }
   } else {
-    authOnlyItems.forEach(el => el.style.display = 'none');
+    document.body.classList.remove('logged-in');
+    authOnlyItems.forEach(el => {
+      el.style.setProperty('display', 'none', 'important');
+    });
     if (authContainer) {
       authContainer.innerHTML = `
         <a href="login.html" class="action-btn">

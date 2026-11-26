@@ -80,6 +80,19 @@ button, input, select, textarea {
   padding: 0 1.25rem;
 }
 
+/* Auth visibility helper */
+.auth-only {
+  display: none !important;
+}
+
+body.logged-in .auth-only {
+  display: block !important;
+}
+
+body.logged-in li.auth-only {
+  display: list-item !important;
+}
+
 /* ==========================================================================
    TOP BAR & HEADER
    ========================================================================== */
