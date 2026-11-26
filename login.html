@@ -27,18 +27,6 @@
         <p>Truy cập tài khoản CyberTech của bạn để quản lý đơn hàng</p>
       </div>
 
-      <div style="background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 6px; padding: 0.85rem 1rem; font-size: 0.85rem; color: #1e40af; margin-bottom: 1.5rem; line-height: 1.8;">
-        <div style="margin-bottom: 0.5rem;"><i class="fas fa-info-circle"></i> <strong>Tài khoản dùng thử (Bấm để điền nhanh):</strong></div>
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.35rem;">
-          <span>• <strong>Admin:</strong> <code>admin@cybertech.vn</code> / <code>123</code></span>
-          <button type="button" class="btn btn-sm btn-outline" style="padding: 2px 8px; font-size: 0.78rem;" onclick="fillDemoAccount('admin@cybertech.vn', '123')">Điền Admin</button>
-        </div>
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
-          <span>• <strong>Khách hàng:</strong> <code>khach@cybertech.vn</code> / <code>123</code></span>
-          <button type="button" class="btn btn-sm btn-outline" style="padding: 2px 8px; font-size: 0.78rem;" onclick="fillDemoAccount('khach@cybertech.vn', '123')">Điền Khách</button>
-        </div>
-      </div>
-
       <form id="login-form" onsubmit="handleLoginSubmit(event)">
         <div class="form-group">
           <label class="form-label" for="login-email">Địa chỉ Email <span class="req">*</span></label>
@@ -64,11 +52,6 @@
   <script src="js/products-data.js?v=5"></script>
   <script src="js/main.js?v=5"></script>
   <script>
-    function fillDemoAccount(email, pass) {
-      document.getElementById('login-email').value = email;
-      document.getElementById('login-password').value = pass;
-    }
-
     function handleLoginSubmit(e) {
       e.preventDefault();
       const email = document.getElementById('login-email').value.trim();
