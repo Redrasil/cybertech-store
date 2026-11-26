@@ -48,6 +48,15 @@ function saveCart(cart) {
 }
 
 function addToCart(productId, qty = 1) {
+  const user = getCurrentUser();
+  if (!user) {
+    showToast('Vui lòng đăng nhập để thêm sản phẩm vào giỏ hàng!', 'info');
+    setTimeout(() => {
+      window.location.href = 'login.html';
+    }, 1000);
+    return false;
+  }
+
   const products = getStoredProducts();
   const product = products.find(p => p.id === Number(productId));
 
@@ -109,11 +118,29 @@ function updateCartCounter() {
 
 // 4. AUTH SYSTEM (ĐĂNG KÝ, ĐĂNG NHẬP, ĐỔI MK - LOCALSTORAGE)
 function getUsers() {
-  const users = localStorage.getItem(STORAGE_KEYS.USERS);
-  return users ? JSON.parse(users) : [
-    { name: "Quản Trị Viên", email: "admin@cybertech.vn", password: "123" },
-    { name: "Quản Trị Viên", email: "student@cybertech.vn", password: "123" }
+  const defaultUsers = [
+    { name: "Quản Trị Viên", email: "admin@cybertech.vn", password: "123", role: "admin" },
+    { name: "Khách Hàng", email: "khach@cybertech.vn", password: "123", role: "customer" }
   ];
+  const stored = localStorage.getItem(STORAGE_KEYS.USERS);
+  if (!stored) {
+    localStorage.setItem(STORAGE_KEYS.USERS, JSON.stringify(defaultUsers));
+    return defaultUsers;
+  }
+  const users = JSON.parse(stored);
+  let updated = false;
+  defaultUsers.forEach(def => {
+    const existing = users.find(u => u.email.toLowerCase() === def.email.toLowerCase());
+    if (!existing) {
+      users.push(def);
+      updated = true;
+    } else if (!existing.role) {
+      existing.role = def.role;
+      updated = true;
+    }
+  });
+  if (updated) saveUsers(users);
+  return users;
 }
 
 function saveUsers(users) {
@@ -140,7 +167,7 @@ function registerUser(name, email, password) {
     showToast('Email này đã được đăng ký tài khoản!', 'error');
     return false;
   }
-  const newUser = { name, email, password };
+  const newUser = { name, email, password, role: "customer" };
   users.push(newUser);
   saveUsers(users);
   setCurrentUser(newUser);
@@ -195,16 +222,38 @@ function updateAuthUI() {
   const user = getCurrentUser();
   const authContainer = document.getElementById('user-auth-slot');
   const authOnlyItems = document.querySelectorAll('.auth-only');
+  const adminOnlyItems = document.querySelectorAll('.admin-only');
+
+  const isAdmin = user && (user.role === 'admin' || user.email.toLowerCase() === 'admin@cybertech.vn');
 
   if (user) {
     document.body.classList.add('logged-in');
     authOnlyItems.forEach(el => {
-      if (el.tagName === 'LI') {
+      if (el.classList.contains('action-btn')) {
+        el.style.setProperty('display', 'flex', 'important');
+      } else if (el.tagName === 'LI') {
         el.style.setProperty('display', 'list-item', 'important');
       } else {
         el.style.setProperty('display', 'block', 'important');
       }
     });
+
+    if (isAdmin) {
+      document.body.classList.add('is-admin');
+      adminOnlyItems.forEach(el => {
+        if (el.tagName === 'LI') {
+          el.style.setProperty('display', 'list-item', 'important');
+        } else {
+          el.style.setProperty('display', 'block', 'important');
+        }
+      });
+    } else {
+      document.body.classList.remove('is-admin');
+      adminOnlyItems.forEach(el => {
+        el.style.setProperty('display', 'none', 'important');
+      });
+    }
+
     if (authContainer) {
       authContainer.innerHTML = `
         <div style="display: flex; align-items: center; gap: 0.75rem;">
@@ -221,8 +270,11 @@ function updateAuthUI() {
       `;
     }
   } else {
-    document.body.classList.remove('logged-in');
+    document.body.classList.remove('logged-in', 'is-admin');
     authOnlyItems.forEach(el => {
+      el.style.setProperty('display', 'none', 'important');
+    });
+    adminOnlyItems.forEach(el => {
       el.style.setProperty('display', 'none', 'important');
     });
     if (authContainer) {

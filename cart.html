@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Giỏ Hàng & Thanh Toán - CyberTech</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css?v=3">
-  <link rel="stylesheet" href="css/responsive.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/responsive.css?v=4">
 </head>
 <body>
 
@@ -39,7 +39,7 @@
         </div>
         <div class="header-actions">
           <div id="user-auth-slot"></div>
-          <a href="cart.html" class="action-btn" title="Giỏ hàng">
+          <a href="cart.html" class="action-btn auth-only" style="display: none !important;" title="Giỏ hàng">
             <i class="fas fa-shopping-cart"></i>
             <span>Giỏ hàng</span>
             <span class="cart-count">0</span>
@@ -55,7 +55,7 @@
       <ul class="nav-links">
         <li><a href="index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
         <li><a href="products.html"><i class="fas fa-desktop"></i> Sản phẩm & Linh kiện</a></li>
-        <li class="auth-only" style="display: none !important;"><a href="upload-product.html"><i class="fas fa-cloud-upload-alt"></i> Đăng sản phẩm</a></li>
+        <li class="admin-only" style="display: none !important;"><a href="upload-product.html"><i class="fas fa-cloud-upload-alt"></i> Đăng sản phẩm</a></li>
         <li><a href="about.html"><i class="fas fa-users"></i> Giới thiệu</a></li>
         <li><a href="contact.html"><i class="fas fa-paper-plane"></i> Liên hệ & Góp ý</a></li>
       </ul>
@@ -64,7 +64,7 @@
 
   <!-- CART SECTION -->
   <main class="section">
-    <div class="container">
+    <div class="container" id="cart-main-container">
       <div class="section-header">
         <h1 class="section-title"><i class="fas fa-shopping-cart" style="color: var(--primary);"></i> Giỏ Hàng Của Bạn</h1>
         <a href="products.html" class="btn btn-outline btn-sm"><i class="fas fa-arrow-left"></i> Tiếp tục mua sắm</a>
@@ -153,18 +153,38 @@
     </div>
   </footer>
 
-  <script src="js/products-data.js?v=3"></script>
-  <script src="js/main.js?v=3"></script>
+  <script src="js/products-data.js?v=4"></script>
+  <script src="js/main.js?v=4"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      const user = getCurrentUser();
+      const cartContainer = document.getElementById('cart-main-container');
+      if (!user) {
+        if (cartContainer) {
+          cartContainer.innerHTML = `
+            <div style="text-align: center; padding: 4rem 1.5rem; background: var(--white); border-radius: var(--radius-lg); border: 1px solid var(--gray-200); max-width: 580px; margin: 2rem auto; box-shadow: var(--card-shadow);">
+              <div style="width: 70px; height: 70px; border-radius: 50%; background: #eff6ff; color: var(--primary); display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1.25rem;">
+                <i class="fas fa-shopping-cart"></i>
+              </div>
+              <h2 style="font-size: 1.6rem; font-weight: 800; color: var(--gray-900); margin-bottom: 0.75rem;">Yêu Cầu Đăng Nhập</h2>
+              <p style="color: var(--gray-600); margin-bottom: 2rem; line-height: 1.6; font-size: 0.95rem;">
+                Vui lòng đăng nhập tài khoản để xem giỏ hàng và tiến hành đặt mua sản phẩm.
+              </p>
+              <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                <a href="login.html" class="btn btn-primary btn-lg"><i class="fas fa-sign-in-alt"></i> Đăng nhập ngay</a>
+                <a href="index.html" class="btn btn-outline btn-lg"><i class="fas fa-home"></i> Về trang chủ</a>
+              </div>
+            </div>
+          `;
+        }
+        return;
+      }
+
       renderCartPage();
 
       // Pre-fill user name if logged in
-      const user = getCurrentUser();
-      if (user) {
-        const nameInput = document.getElementById('checkout-name');
-        if (nameInput) nameInput.value = user.name;
-      }
+      const nameInput = document.getElementById('checkout-name');
+      if (nameInput) nameInput.value = user.name;
     });
   </script>
 </body>

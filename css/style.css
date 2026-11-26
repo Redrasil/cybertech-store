@@ -81,15 +81,22 @@ button, input, select, textarea {
 }
 
 /* Auth visibility helper */
-.auth-only {
+.auth-only,
+.admin-only {
   display: none !important;
 }
 
-body.logged-in .auth-only {
+body.logged-in .auth-only,
+body.is-admin .admin-only {
   display: block !important;
 }
 
-body.logged-in li.auth-only {
+body.logged-in .action-btn.auth-only {
+  display: flex !important;
+}
+
+body.logged-in li.auth-only,
+body.is-admin li.admin-only {
   display: list-item !important;
 }
 

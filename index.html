@@ -6,8 +6,8 @@
   <title>CyberTech - Thế Giới Công Nghệ & Linh Kiện Máy Tính Cao Cấp</title>
   <!-- Google Fonts & FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="css/style.css?v=3">
-  <link rel="stylesheet" href="css/responsive.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
+  <link rel="stylesheet" href="css/responsive.css?v=4">
 </head>
 <body>
 
@@ -57,7 +57,7 @@
             </a>
           </div>
 
-          <a href="cart.html" class="action-btn" title="Giỏ hàng">
+          <a href="cart.html" class="action-btn auth-only" style="display: none !important;" title="Giỏ hàng">
             <i class="fas fa-shopping-cart"></i>
             <span>Giỏ hàng</span>
             <span class="cart-count">0</span>
@@ -73,7 +73,7 @@
       <ul class="nav-links">
         <li><a href="index.html" class="active"><i class="fas fa-home"></i> Trang chủ</a></li>
         <li><a href="products.html"><i class="fas fa-desktop"></i> Sản phẩm & Linh kiện</a></li>
-        <li class="auth-only" style="display: none !important;"><a href="upload-product.html"><i class="fas fa-cloud-upload-alt"></i> Đăng sản phẩm</a></li>
+        <li class="admin-only" style="display: none !important;"><a href="upload-product.html"><i class="fas fa-cloud-upload-alt"></i> Đăng sản phẩm</a></li>
         <li><a href="about.html"><i class="fas fa-users"></i> Giới thiệu</a></li>
         <li><a href="contact.html"><i class="fas fa-paper-plane"></i> Liên hệ & Góp ý</a></li>
       </ul>
@@ -310,7 +310,7 @@
           <ul class="footer-links">
             <li><a href="about.html">Giới thiệu CyberTech</a></li>
             <li><a href="products.html">Sản phẩm & Linh kiện</a></li>
-            <li class="auth-only" style="display: none !important;"><a href="upload-product.html">Đăng sản phẩm mới</a></li>
+            <li class="admin-only" style="display: none !important;"><a href="upload-product.html">Đăng sản phẩm mới</a></li>
             <li><a href="contact.html">Liên hệ hỗ trợ</a></li>
           </ul>
         </div>
@@ -346,8 +346,8 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="js/products-data.js?v=3"></script>
-  <script src="js/main.js?v=3"></script>
+  <script src="js/products-data.js?v=4"></script>
+  <script src="js/main.js?v=4"></script>
   <script>
     // Home Page specific render
     document.addEventListener('DOMContentLoaded', () => {
