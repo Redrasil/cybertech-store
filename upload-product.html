@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Upload Sản Phẩm - Yêu Cầu Đồ Án Sinh Viên - CyberTech</title>
+  <title>Đăng Sản Phẩm Mới - CyberTech Store</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
@@ -55,7 +55,7 @@
       <ul class="nav-links">
         <li><a href="index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
         <li><a href="products.html"><i class="fas fa-desktop"></i> Sản phẩm & Linh kiện</a></li>
-        <li><a href="upload-product.html" class="active"><i class="fas fa-cloud-upload-alt"></i> Upload sản phẩm <span class="nav-upload-badge">Đồ Án</span></a></li>
+        <li><a href="upload-product.html" class="active"><i class="fas fa-cloud-upload-alt"></i> Đăng sản phẩm</a></li>
         <li><a href="about.html"><i class="fas fa-users"></i> Giới thiệu</a></li>
         <li><a href="contact.html"><i class="fas fa-paper-plane"></i> Liên hệ & Góp ý</a></li>
       </ul>
@@ -71,10 +71,10 @@
         <div style="display: flex; gap: 1rem; align-items: flex-start;">
           <i class="fas fa-circle-info" style="font-size: 1.5rem; color: var(--primary); margin-top: 3px;"></i>
           <div>
-            <h3 style="font-size: 1.1rem; color: var(--gray-900); margin-bottom: 0.25rem;">HƯỚNG DẪN DÀNH CHO SINH VIÊN (YÊU CẦU ĐỒ ÁN)</h3>
-            <p>Yêu cầu đề tài: <strong>"Mỗi sinh viên upload tối thiểu 5 sản phẩm. Thông tin sản phẩm lưu trữ trong LocalStorage."</strong></p>
+            <h3 style="font-size: 1.1rem; color: var(--gray-900); margin-bottom: 0.25rem;">HƯỚNG DẪN ĐĂNG SẢN PHẨM MỚI</h3>
+            <p>Hệ thống cho phép thêm sản phẩm mới vào danh mục bán hàng. Dữ liệu sản phẩm được lưu trữ tự động trong bộ nhớ trình duyệt (LocalStorage).</p>
             <p style="margin-top: 0.35rem; font-size: 0.88rem; color: var(--gray-600);">
-              Bạn có thể tự tay nhập thông tin bên dưới hoặc click nút <strong>"Nạp nhanh 5 sản phẩm mẫu SV"</strong> để kiểm thử tính năng ngay lập tức. Sau khi lưu, sản phẩm sẽ xuất hiện ngay lập tức trên trang chủ và trang danh mục sản phẩm!
+              Bạn có thể tự nhập thông số hoặc bấm nút <strong>"Nạp 5 sản phẩm mẫu"</strong> để thêm nhanh danh sách sản phẩm thử nghiệm. Sau khi lưu, sản phẩm sẽ xuất hiện ngay lập tức trên trang chủ và danh mục sản phẩm!
             </p>
           </div>
         </div>
@@ -91,7 +91,7 @@
 
           <div style="display: flex; gap: 0.75rem;">
             <button type="button" class="btn btn-outline btn-sm" onclick="seedStudentProducts()">
-              <i class="fas fa-magic"></i> Nạp nhanh 5 SP mẫu SV
+              <i class="fas fa-magic"></i> Nạp 5 sản phẩm mẫu
             </button>
             <button type="button" class="btn btn-secondary btn-sm" onclick="handleResetDefault()">
               <i class="fas fa-undo"></i> Reset dữ liệu gốc
@@ -426,7 +426,7 @@ Bảo hành: 10 năm"></textarea>
       ];
 
       student5.forEach(prod => saveProduct(prod));
-      showToast('Đã nạp thành công 5 sản phẩm mẫu của sinh viên vào LocalStorage!');
+      showToast('Đã nạp thành công 5 sản phẩm mẫu vào LocalStorage!');
       renderManageTable();
     }
 
