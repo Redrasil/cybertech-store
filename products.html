@@ -63,7 +63,7 @@
       <ul class="nav-links">
         <li><a href="index.html"><i class="fas fa-home"></i> Trang chủ</a></li>
         <li><a href="products.html" class="active"><i class="fas fa-desktop"></i> Sản phẩm & Linh kiện</a></li>
-        <li><a href="upload-product.html"><i class="fas fa-cloud-upload-alt"></i> Đăng sản phẩm</a></li>
+        <li class="auth-only"><a href="upload-product.html"><i class="fas fa-cloud-upload-alt"></i> Đăng sản phẩm</a></li>
         <li><a href="about.html"><i class="fas fa-users"></i> Giới thiệu</a></li>
         <li><a href="contact.html"><i class="fas fa-paper-plane"></i> Liên hệ & Góp ý</a></li>
       </ul>
@@ -185,8 +185,8 @@
             </ul>
           </div>
 
-          <!-- Upload Call to action -->
-          <div style="background: #f0fdf4; border: 1px dashed var(--success); padding: 1rem; border-radius: var(--radius-md); text-align: center; margin-top: 1.5rem;">
+          <!-- Upload Call to action (Only for logged-in users) -->
+          <div class="auth-only" style="background: #f0fdf4; border: 1px dashed var(--success); padding: 1rem; border-radius: var(--radius-md); text-align: center; margin-top: 1.5rem;">
             <p style="font-size: 0.82rem; color: #166534; margin-bottom: 0.6rem; font-weight: 600;">Quản lý kho hàng & đăng bán</p>
             <a href="upload-product.html" class="btn btn-sm btn-success" style="width: 100%;">
               <i class="fas fa-plus-circle"></i> Đăng Sản Phẩm Mới

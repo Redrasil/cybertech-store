@@ -193,29 +193,35 @@ function logoutUser() {
 function updateAuthUI() {
   const user = getCurrentUser();
   const authContainer = document.getElementById('user-auth-slot');
-  if (!authContainer) return;
+  const authOnlyItems = document.querySelectorAll('.auth-only');
 
   if (user) {
-    authContainer.innerHTML = `
-      <div style="display: flex; align-items: center; gap: 0.75rem;">
-        <span style="font-size: 0.88rem; font-weight: 600; color: var(--gray-800);">
-          <i class="fas fa-user-circle" style="color: var(--primary); font-size: 1.1rem;"></i> ${user.name}
-        </span>
-        <a href="change-password.html" class="btn btn-sm btn-outline" title="Đổi mật khẩu">
-          <i class="fas fa-key"></i> Đổi MK
-        </a>
-        <button onclick="logoutUser()" class="btn btn-sm btn-danger" title="Đăng xuất">
-          <i class="fas fa-sign-out-alt"></i>
-        </button>
-      </div>
-    `;
+    authOnlyItems.forEach(el => el.style.display = '');
+    if (authContainer) {
+      authContainer.innerHTML = `
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <span style="font-size: 0.88rem; font-weight: 600; color: var(--gray-800);">
+            <i class="fas fa-user-circle" style="color: var(--primary); font-size: 1.1rem;"></i> ${user.name}
+          </span>
+          <a href="change-password.html" class="btn btn-sm btn-outline" title="Đổi mật khẩu">
+            <i class="fas fa-key"></i> Đổi MK
+          </a>
+          <button onclick="logoutUser()" class="btn btn-sm btn-danger" title="Đăng xuất">
+            <i class="fas fa-sign-out-alt"></i>
+          </button>
+        </div>
+      `;
+    }
   } else {
-    authContainer.innerHTML = `
-      <a href="login.html" class="action-btn">
-        <i class="far fa-user"></i>
-        <span>Đăng nhập</span>
-      </a>
-    `;
+    authOnlyItems.forEach(el => el.style.display = 'none');
+    if (authContainer) {
+      authContainer.innerHTML = `
+        <a href="login.html" class="action-btn">
+          <i class="far fa-user"></i>
+          <span>Đăng nhập</span>
+        </a>
+      `;
+    }
   }
 }
 
