@@ -2,7 +2,7 @@
 
 - **Môn học:** Thiết kế Web / Lập trình Web
 - **Đề tài:** Website thương mại điện tử kinh doanh đồ công nghệ, linh kiện máy tính
-- **Sinh viên:** Redrasil
+- **Sinh viên:** Hoàng Dương Phúc Quang
 - **Website trực tuyến:** [https://redrasil.github.io/cybertech-store/](https://redrasil.github.io/cybertech-store/)
 - **Mã nguồn:** [https://github.com/Redrasil/cybertech-store](https://github.com/Redrasil/cybertech-store)
 
@@ -29,10 +29,10 @@ Website bán hàng công nghệ trực tuyến được xây dựng bằng các 
 
 ---
 
-## 3. Tính năng nổi bật theo yêu cầu
-- **Responsive design:** Tương thích hiển thị tốt trên máy tính, máy tính bảng và điện thoại (kèm menu hamburger trên mobile).
+## 3. Tính năng nổi bật 
+- **Responsive design:** Tương thích hiển thị tốt trên máy tính, máy tính bảng và điện thoại.
 - **Hiệu ứng động (Animation):** Hiệu ứng trôi banner, hover phóng to ảnh, popup xem nhanh và thông báo toast trượt tự động.
-- **Tương tác & Lưu trữ:** Dữ liệu sản phẩm (tối thiểu 5 sản phẩm upload), tài khoản, giỏ hàng và góp ý đều được lưu bền vững qua LocalStorage, không bị mất khi F5 tải lại trang.
+- **Tương tác & Lưu trữ:** Dữ liệu sản phẩm, tài khoản, giỏ hàng và góp ý đều được lưu bền vững qua LocalStorage.
 
 ---
 
